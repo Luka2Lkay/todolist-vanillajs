@@ -1,3 +1,5 @@
+
+
 .username {
     background-image: url(images/profileIcon.png);
     background-repeat: no-repeat;
@@ -17,3 +19,9 @@
 #passwords-not-matching {
     color: red;
 }
+
+.active{
+    background-color: blue;
+    color: #fff;
+}
+
