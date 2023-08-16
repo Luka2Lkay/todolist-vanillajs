@@ -9,15 +9,11 @@ const login = () => {
   };
 
   localStorage.setItem("userInfo", JSON.stringify(userInfo));
-  window.location.href = "./list.html"
+  window.location.href = "./list.html";
 };
 
 const getInfo = () => {
-    let info = JSON.parse(localStorage.getItem('userInfo'))
-   
-    console.log(info)
-}
-
-
+  JSON.parse(localStorage.getItem("userInfo"));
+};
 
 loginBtn.addEventListener("click", login);

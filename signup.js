@@ -8,7 +8,7 @@ const users = [];
 
 const register = () => {
 
-  // if()
+
   const user = {
     'email': username.value,
     'password': password.value,
