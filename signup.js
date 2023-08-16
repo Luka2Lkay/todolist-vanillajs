@@ -4,27 +4,21 @@ const password2 = document.querySelector(".password2");
 const registerBtn = document.getElementById("register");
 const passwordsNotMatching = document.getElementById("passwords-not-matching");
 
-const users = [];
+let allUsers = [];
+allUsers = JSON.parse(localStorage.getItem('users')) ? JSON.parse(localStorage.getItem('users')) : []
 
 const register = () => {
 
-
-  const user = {
-    'email': username.value,
-    'password': password.value,
-  };
-
-  if (
-    password.value === password2.value &&
-    password.value !== "" &&
-    password2.value !== ""
-  ) {
-    // alert(user)
-    users.push(user);
-    // localStorage.setItem("users", JSON.stringify(users));
-    window.location.assign("list.html");
+  if (allUsers.some((v) => {
+    return v.username == username.value
+  })){
+   alert ('duplicate data')
   } else {
-    passwordsNotMatching.textContent = "Passwords don't match";
+    allUsers.push({
+      'username': username.value,
+      'password': password.value
+    })
+    localStorage.setItem('users', JSON.stringify(allUsers))
   }
 };
 

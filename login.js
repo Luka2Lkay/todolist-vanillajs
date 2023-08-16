@@ -4,8 +4,8 @@ const loginBtn = document.getElementById("login");
 
 const login = () => {
   const userInfo = {
-    email: username.value,
-    password: password.value,
+    'email': username.value,
+    'password': password.value,
   };
 
   localStorage.setItem("userInfo", JSON.stringify(userInfo));
@@ -13,7 +13,8 @@ const login = () => {
 };
 
 const getInfo = () => {
-  JSON.parse(localStorage.getItem("userInfo"));
-};
-
+    JSON.parse(localStorage.getItem("userInfo"));
+  };
+  
+  getInfo()
 loginBtn.addEventListener("click", login);
