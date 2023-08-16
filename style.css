@@ -1,0 +1,19 @@
+.username {
+    background-image: url(images/profileIcon.png);
+    background-repeat: no-repeat;
+    background-position: 0%;
+    padding-left: 15%;
+    margin-bottom: 5px;
+}
+
+.password, .password2 {
+    background-image: url(images/padlock.jpg);
+    background-repeat: no-repeat;
+    background-position: 0%;
+    padding-left: 15%;
+    margin-bottom: 5px;
+}
+
+#passwords-not-matching {
+    color: red;
+}
