@@ -10,13 +10,13 @@ const getUserLogins = () => {
 
 getUserLogins();
 
-// const getInfo = () => {
-//   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+const getInfo = () => {
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-//   usernameDiv.textContent = userInfo.username;
-// };
+  usernameDiv.textContent = userInfo.username
+};
 
-// getInfo();
+getInfo();
 
 const logout = () => {
   window.location.href = "./index.html";

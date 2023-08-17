@@ -5,8 +5,7 @@ const registerBtn = document.getElementById("register");
 const passwordsNotMatching = document.getElementById("passwords-not-matching");
 const usernameExists = document.getElementById("username-exists");
 
-let allUsers = [];
-allUsers = JSON.parse(localStorage.getItem("allUsers"))
+let allUsers = JSON.parse(localStorage.getItem("allUsers"))
   ? JSON.parse(localStorage.getItem("allUsers"))
   : [];
 
@@ -17,10 +16,10 @@ const register = () => {
   };
 
   const checkInfo = allUsers.some((userObject) => {
-    return userObject.username == username.value;
+    return userObject.username === username.value;
   });
 
-  if (checkInfo === false) {
+  if (!checkInfo) {
     allUsers.push(userLogins);
     window.location.href = "list.html";
     localStorage.setItem("allUsers", JSON.stringify(allUsers));
