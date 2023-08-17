@@ -1,20 +1,26 @@
-const logoutLink = document.getElementById("logout")
+const logoutLink = document.getElementById("logout");
 
-const userEmail = document.getElementById("user-email")
+const usernameDiv = document.getElementById("username");
+
+const getUserLogins = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  usernameDiv.textContent = user.username
+};
+
+getUserLogins();
 
 // const getInfo = () => {
-//     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+//   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-// userEmail.textContent = userInfo.email
+//   usernameDiv.textContent = userInfo.username;
+// };
 
-//   };
-  
-//   getInfo()
+// getInfo();
 
 const logout = () => {
-    // localStorage.clear()
-    window.location.href = "./index.html"
-}
+  window.location.href = "./index.html";
+  localStorage.removeItem('user')
+};
 
-  logoutLink.addEventListener('click', logout)
-
+logoutLink.addEventListener("click", logout);
