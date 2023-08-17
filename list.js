@@ -2,25 +2,17 @@ const logoutLink = document.getElementById("logout");
 
 const usernameDiv = document.getElementById("username");
 
-const getUserLogins = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-
-  usernameDiv.textContent = user.username
-};
-
-getUserLogins();
-
 const getInfo = () => {
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const userLogins = JSON.parse(localStorage.getItem("userLogins"));
 
-  usernameDiv.textContent = userInfo.username
+  usernameDiv.textContent = userLogins.username;
 };
 
 getInfo();
 
 const logout = () => {
+  localStorage.removeItem("userLogins");
   window.location.href = "./index.html";
-  localStorage.removeItem('user')
 };
 
 logoutLink.addEventListener("click", logout);

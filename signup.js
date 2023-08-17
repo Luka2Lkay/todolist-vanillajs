@@ -5,7 +5,7 @@ const registerBtn = document.getElementById("register");
 const passwordsNotMatching = document.getElementById("passwords-not-matching");
 const usernameExists = document.getElementById("username-exists");
 
-let allUsers = JSON.parse(localStorage.getItem("allUsers"))
+const allUsers = JSON.parse(localStorage.getItem("allUsers"))
   ? JSON.parse(localStorage.getItem("allUsers"))
   : [];
 
@@ -23,7 +23,7 @@ const register = () => {
     allUsers.push(userLogins);
     window.location.href = "list.html";
     localStorage.setItem("allUsers", JSON.stringify(allUsers));
-    localStorage.setItem("user", JSON.stringify(userLogins));
+    localStorage.setItem("userLogins", JSON.stringify(userLogins));
   } else {
     usernameExists.textContent = "the username exists";
     usernameExists.style.color = "red";
@@ -32,10 +32,10 @@ const register = () => {
   }
 };
 
-const getUserLogins = () => {
-  JSON.parse(localStorage.getItem("user"));
+const getInfo = () => {
+  JSON.parse(localStorage.getItem("userLogins"));
 };
 
-getUserLogins();
+getInfo();
 
 registerBtn.addEventListener("click", register);
