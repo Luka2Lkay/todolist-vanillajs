@@ -22,7 +22,11 @@ const login = () => {
   if (checkInfo) {
     localStorage.setItem("userLogins", JSON.stringify(userLogins));
     window.location.href = "./list.html";
-  } else {
+  } else if (username.value === "" || password.value === "") {
+    incorrectDetails.textContent = "Please fill all fields";
+    incorrectDetails.style.color = "red";
+  } 
+  else {
     incorrectDetails.textContent = "Incorrect username or password";
     incorrectDetails.style.color = "red";
     password.value = ''
