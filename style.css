@@ -1,5 +1,3 @@
-
-
 .username {
     background-image: url(images/profileIcon.png);
     background-repeat: no-repeat;
@@ -8,7 +6,8 @@
     margin-bottom: 5px;
 }
 
-.password, .password2 {
+.password,
+.password2 {
     background-image: url(images/padlock.jpg);
     background-repeat: no-repeat;
     background-position: 0%;
@@ -20,8 +19,15 @@
     color: red;
 }
 
-.active{
+.active {
     background-color: blue;
     color: #fff;
 }
 
+#edit {
+    cursor: pointer;
+}
+
+#delete {
+    cursor: pointer;
+}
