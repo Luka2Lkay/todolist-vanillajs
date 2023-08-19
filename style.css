@@ -32,6 +32,6 @@
     cursor: pointer;
 }
 
-#new-item-form {
+#add-new-item-form, #update-item-form {
     display: none;
 }

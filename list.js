@@ -2,12 +2,17 @@ const logoutLink = document.getElementById("logout");
 const usernameDiv = document.getElementById("username");
 const tableRows = document.getElementById("table-rows");
 const newItemButton = document.getElementById("new-item-button");
-const newItemForm = document.getElementById("new-item-form");
+const addNewItemForm = document.getElementById("add-new-item-form");
+const updateItemForm = document.getElementById("update-item-form");
 const tableData = document.getElementById("table-data");
 const addItemButton = document.getElementById("add-item-button");
+const updateItemButton = document.getElementById("update-item-button");
 const title = document.getElementById("title");
+const updateTitle = document.getElementById("update-title");
 const description = document.getElementById("description");
+const updateDescription = document.getElementById("update-description");
 const dueDate = document.getElementById("due-date");
+const updateDueDate = document.getElementById("update-due-date");
 
 let id = JSON.parse(localStorage.getItem("id"))
   ? JSON.parse(localStorage.getItem("id"))
@@ -43,7 +48,7 @@ const getList = () => {
     <td class="d-flex justify-content-between">
     <i class="bi bi-eye"></i>
     <i class="bi bi-pencil" id="edit" onClick = editItem(${record.id})></i>
-    <i class="bi bi-trash" id="delete"></i>
+    <i class="bi bi-trash" id="delete" onClick = deleteItem(${record.id})></i>
     </td>
     </tr>`;
   });
@@ -54,7 +59,7 @@ const getList = () => {
 window.addEventListener("DOMContentLoaded", getList);
 
 const showAddItemForm = () => {
-  newItemForm.style.display = "block";
+  addNewItemForm.style.display = "block";
   tableData.style.display = "none";
   newItemButton.style.display = "none";
 };
@@ -72,27 +77,51 @@ const addItem = () => {
 
   records.push(record);
 
-  newItemForm.style.display = "none";
+  addNewItemForm.style.display = "none";
   tableData.style.display = "block";
 
   getList();
   window.location.reload();
-  alert(new Date());
 };
 
 const editItem = (id) => {
-  newItemForm.style.display = "block";
+  const idInput = document.getElementById("id");
+  updateItemForm.style.display = "block";
   const object = records.find((record) => record.id === id);
 
-  title.value = object.title;
-  description.value = object.description;
-  dueDate.value = object.dueDate;
+  updateTitle.value = object.title;
+  updateDescription.value = object.description;
+  updateDueDate.value = object.dueDate;
+  idInput.value = object.id;
+  
 };
 
 const updateItem = () => {
-  
-}
+  const idInputValue = document.getElementById("id").value;
+  const updateTitleValue = updateTitle.value;
+  const updateDescriptionValue = updateDescription.value;
+  const updateDueDateValue = updateDueDate.value;
 
+  const index = records.findIndex(
+    (record) => record.id === Number(idInputValue)
+  );
+  records[index] = {
+    id: idInputValue,
+    title: updateTitleValue,
+    description: updateDescriptionValue,
+    dueDate: updateDueDateValue,
+  };
+
+  updateItemForm.style.display = "none";
+  getList();
+};
+
+const deleteItem = (id) => {
+  records = records.filter((record) => record.id !== id);
+  getList();
+};
+
+updateItemButton.addEventListener("click", updateItem);
 addItemButton.addEventListener("click", addItem);
 newItemButton.addEventListener("click", showAddItemForm);
 logoutLink.addEventListener("click", logout);

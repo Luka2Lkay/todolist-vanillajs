@@ -47,44 +47,83 @@
                     </svg>
                 </button>
             </div>
-            <button type="button" class="btn btn-primary mx-3" style="width: 8em;" id="new-item-button">New Item</button>
+            <button type="button" class="btn btn-primary mx-3" style="width: 8em;" id="new-item-button">New
+                Item</button>
         </div>
-
-        <form class="mask d-flex align-items-center h-100 gradient-custom-3 mt-3">
-            <div class="container h-100 height">
+        <!-- Add form -->
+        <form class="mask d-flex align-items-center h-100 gradient-custom-3 mt-3" >
+            <div class="container h-100 height" id="add-new-item-form">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                         <div class="card" style="border-radius: 15px;">
-                            <div class="card-body p-4" id="new-item-form">
+                            <div class="card-body p-4">
                                 <div class="d-flex align-items-center">
                                     <h2 class="mt-5 p-2" style="width: 20em;">New item</h2>
                                     <div class="container h-100 mb-4 d-flex justify-content-end">
                                         <button type="submit"
                                             class="btn btn-primary mt-3 text bg-dark justify-content-end">CANCEL</button><button
-                                            type="button"
-                                            class="btn btn-primary mt-3 text bg-dark justify-content-end" id="add-item-button">SAVE</button>
+                                            type="button" class="btn btn-primary mt-3 text bg-dark justify-content-end"
+                                            id="add-item-button">SAVE</button>
                                     </div>
                                 </div>
                                 <div class="mb-0 p-1">
-                                    <div class="form-outline mb-3 d-flex">
-                                        <input type="number" class="form-control" hidden placeholder="Title" id="id"/>
-                                    </div>
-                                        <P class="mb-3 p-3">Title</P>
-                                        <input type="text" class="form-control" placeholder="Title" id="title"/>
-                                    </div>
-                                    <div class="form-outline mb-3 d-flex">
-                                        <p class="mb-3 p-3">Description</p>
-                                        <input type="text" class="form-control" placeholder="Description" id="description"/>
-                                    </div>
-                                    <div class="form-outline mb-3 d-flex">
-                                        <p class="mb-3 p-3">Due Date</p>
-                                        <input type="date" class="form-control" placeholder="Today's Date" id="due-date"/>
-                                    </div>
+                                    <P class="mb-3 p-3">Title</P>
+                                    <input type="text" class="form-control" placeholder="Title" id="title" />
+                                </div>
+                                <div class="form-outline mb-3 d-flex">
+                                    <p class="mb-3 p-3">Description</p>
+                                    <input type="text" class="form-control" placeholder="Description"
+                                        id="description" />
+                                </div>
+                                <div class="form-outline mb-3 d-flex">
+                                    <p class="mb-3 p-3">Due Date</p>
+                                    <input type="date" class="form-control" placeholder="Today's Date" id="due-date" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
+        </form>
+
+        <!-- update form -->
+        <form class="mask d-flex align-items-center h-100 gradient-custom-3 mt-3">
+            <div class="container h-100 height" id="update-item-form">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center">
+                                    <h2 class="mt-5 p-2" style="width: 20em;">Edit item</h2>
+                                    <div class="container h-100 mb-4 d-flex justify-content-end">
+                                        <button type="submit"
+                                            class="btn btn-primary mt-3 text bg-dark justify-content-end">CANCEL</button><button
+                                            type="button" class="btn btn-primary mt-3 text bg-dark justify-content-end"
+                                            id="update-item-button">Update</button>
+                                    </div>
+                                </div>
+                                <div class="mb-0 p-1">
+                                    <div class="form-outline mb-3 d-flex">
+                                        <input type="number" class="form-control" hidden placeholder="Title" id="id" />
+                                    </div>
+                                    <P class="mb-3 p-3">Title</P>
+                                    <input type="text" class="form-control" placeholder="Title" id="update-title" />
+                                </div>
+                                <div class="form-outline mb-3 d-flex">
+                                    <p class="mb-3 p-3">Description</p>
+                                    <input type="text" class="form-control" placeholder="Description"
+                                        id="update-description" />
+                                </div>
+                                <div class="form-outline mb-3 d-flex">
+                                    <p class="mb-3 p-3">Due Date</p>
+                                    <input type="date" class="form-control" placeholder="Today's Date" id="update-due-date" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </form>
 
