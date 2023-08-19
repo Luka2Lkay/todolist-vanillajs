@@ -25,9 +25,13 @@
 }
 
 #edit {
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 #delete {
     cursor: pointer;
+}
+
+#new-item-form {
+    display: none;
 }
