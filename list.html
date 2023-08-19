@@ -58,25 +58,25 @@
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-4">
                                 <div class="d-flex align-items-center">
-                                    <h2 class="mt-5 p-2" style="width: 20em;">New item</h2>
-                                    <div class="container h-100 mb-4 d-flex justify-content-end">
+                                    <h2 class="mt-5 p-2" style="width: 20em; margin-bottom: 2em;" >New item</h2>
+                                    <div class="container h-100 mb-4 d-flex justify-content-between">
                                         <button type="submit"
-                                            class="btn btn-primary mt-3 text bg-dark justify-content-end">CANCEL</button><button
-                                            type="button" class="btn btn-primary mt-3 text bg-dark justify-content-end"
+                                            class="btn btn-primary mt-3 text bg-dark" id="cancel">CANCEL</button><button
+                                            type="button" class="btn btn-primary mt-3 text bg-dark"
                                             id="add-item-button">SAVE</button>
                                     </div>
                                 </div>
-                                <div class="mb-0 p-1">
-                                    <P class="mb-3 p-3">Title</P>
+                                <div class="form-outline mb-3 d-flex">
+                                    <P class="mb-3 p-3"><strong>Title</strong></P>
                                     <input type="text" class="form-control" placeholder="Title" id="title" />
                                 </div>
                                 <div class="form-outline mb-3 d-flex">
-                                    <p class="mb-3 p-3">Description</p>
+                                    <p class="mb-3 p-3"><strong>Description</strong></p>
                                     <input type="text" class="form-control" placeholder="Description"
                                         id="description" />
                                 </div>
                                 <div class="form-outline mb-3 d-flex">
-                                    <p class="mb-3 p-3">Due Date</p>
+                                    <p class="mb-3 p-3"><strong>Due Date</strong></p>
                                     <input type="date" class="form-control" placeholder="Today's Date" id="due-date" />
                                 </div>
                             </div>
@@ -95,11 +95,11 @@
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-4">
                                 <div class="d-flex align-items-center">
-                                    <h2 class="mt-5 p-2" style="width: 20em;">Edit item</h2>
-                                    <div class="container h-100 mb-4 d-flex justify-content-end">
+                                    <h2 class="mt-5 p-2" style="width: 20em; margin-bottom: 2em;" >Edit item</h2>
+                                    <div class="container h-100 mb-4 d-flex justify-content-between">
                                         <button type="submit"
-                                            class="btn btn-primary mt-3 text bg-dark justify-content-end">CANCEL</button><button
-                                            type="button" class="btn btn-primary mt-3 text bg-dark justify-content-end"
+                                            class="btn btn-primary mt-3 text bg-dark" id="cancel">CANCEL</button><button
+                                            type="button" class="btn btn-primary mt-3 text bg-dark"
                                             id="update-item-button">Update</button>
                                     </div>
                                 </div>
@@ -107,16 +107,17 @@
                                     <div class="form-outline mb-3 d-flex">
                                         <input type="number" class="form-control" hidden placeholder="Title" id="id" />
                                     </div>
-                                    <P class="mb-3 p-3">Title</P>
+                                    <div class="form-outline mb-3 d-flex">
+                                        <P class="mb-3 p-3"><strong>Title</strong></P>
                                     <input type="text" class="form-control" placeholder="Title" id="update-title" />
                                 </div>
                                 <div class="form-outline mb-3 d-flex">
-                                    <p class="mb-3 p-3">Description</p>
+                                    <p class="mb-3 p-3"><strong>Description</strong></p>
                                     <input type="text" class="form-control" placeholder="Description"
                                         id="update-description" />
                                 </div>
                                 <div class="form-outline mb-3 d-flex">
-                                    <p class="mb-3 p-3">Due Date</p>
+                                    <p class="mb-3 p-3"><strong>Due Date</strong></p>
                                     <input type="date" class="form-control" placeholder="Today's Date" id="update-due-date" />
                                 </div>
                             </div>

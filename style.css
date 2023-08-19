@@ -35,3 +35,29 @@
 #add-new-item-form, #update-item-form {
     display: none;
 }
+
+#title {
+    width: 100%;
+    margin-left: 3.5em;
+}
+
+#description {
+    margin-left: 0.2em;
+}
+
+#due-date {
+    margin-left: 2.5em;
+}
+
+#update-title {
+    width: 100%;
+    margin-left: 3.5em;
+}
+
+#update-description {
+    margin-left: 0.2em;
+}
+
+#update-due-date {
+    margin-left: 2.5em;
+}
