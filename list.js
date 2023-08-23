@@ -58,6 +58,21 @@ const getList = () => {
 
 window.addEventListener("DOMContentLoaded", getList);
 
+const deleteItem = (id) => {
+  // records = records.filter((record) => record.id !== id);
+
+//  records = records.splice(id,1)
+
+const index = records.findIndex(
+  (record) => record.id == id)
+
+ records.splice(index,1)
+
+  localStorage.setItem("records", JSON.stringify(records));
+
+  getList();
+};
+
 const showAddItemForm = () => {
   addNewItemForm.style.display = "block";
   tableData.style.display = "none";
@@ -85,19 +100,19 @@ const addItem = () => {
 };
 
 const editItem = (id) => {
-  const idInput = document.getElementById("id");
+  const idInput = document.getElementById("update-id");
   updateItemForm.style.display = "block";
+  tableData.style.display = "none";
   const object = records.find((record) => record.id === id);
 
   updateTitle.value = object.title;
   updateDescription.value = object.description;
   updateDueDate.value = object.dueDate;
   idInput.value = object.id;
-  
 };
 
 const updateItem = () => {
-  const idInputValue = document.getElementById("id").value;
+  const idInputValue = document.getElementById("update-id").value;
   const updateTitleValue = updateTitle.value;
   const updateDescriptionValue = updateDescription.value;
   const updateDueDateValue = updateDueDate.value;
@@ -113,13 +128,14 @@ const updateItem = () => {
   };
 
   updateItemForm.style.display = "none";
+  tableData.style.display = "block";
+
+  localStorage.setItem("records", JSON.stringify(records));
+  window.location.reload();
   getList();
 };
 
-const deleteItem = (id) => {
-  records = records.filter((record) => record.id !== id);
-  getList();
-};
+
 
 updateItemButton.addEventListener("click", updateItem);
 addItemButton.addEventListener("click", addItem);
