@@ -38,11 +38,11 @@ let records = JSON.parse(localStorage.getItem("records"))
 let id = JSON.parse(localStorage.getItem("id"))
   ? JSON.parse(localStorage.getItem("id"))
   : 0;
-let index = records.findIndex((record) => record.id);
+
 
 const getList = () => {
   localStorage.setItem("records", JSON.stringify(records));
-
+  let index = records.findIndex((record) => record.id);
   let rows = "";
 
   records.map((record) => {
@@ -151,7 +151,7 @@ const filter = () => {
 
 const search = () => {
   const inputValue = searchInput.value.toLowerCase();
-
+let index = 0
   const filtered = records.filter((record) => {
     record = record.title.toLowerCase();
 
@@ -161,12 +161,13 @@ const search = () => {
   let row = "";
 
   filtered.map((filter) => {
+    index++
     row += `<tr><td>${index}</td>
     <td>${filter.title}</td>
     <td>${filter.description}</td>
     <td>${filter.dueDate}</td>
     <td class="d-flex justify-content-between">
-    <i class="bi bi-eye"></i>
+    <i class="bi bi-eye" onClick = view(${filter.id})></i>
     <i class="bi bi-pencil" id="edit" onClick = editItem(${filter.id})></i>
     <i class="bi bi-trash" id="delete" onClick = deleteItem(${filter.id})></i>
     </td>
@@ -179,6 +180,8 @@ const search = () => {
     window.location.reload();
   }
 };
+
+
 
 searchInput.addEventListener("keyup", search);
 updateItemButton.addEventListener("click", updateItem);
