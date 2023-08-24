@@ -1,6 +1,6 @@
 const logoutLink = document.getElementById("logout");
 const usernameDiv = document.getElementById("username");
-const tableRows = document.getElementById("table-rows");
+let tableRows = document.getElementById("table-rows");
 const newItemButton = document.getElementById("new-item-button");
 const addNewItemForm = document.getElementById("add-new-item-form");
 const updateItemForm = document.getElementById("update-item-form");
@@ -13,15 +13,16 @@ const description = document.getElementById("description");
 const updateDescription = document.getElementById("update-description");
 const dueDate = document.getElementById("due-date");
 const updateDueDate = document.getElementById("update-due-date");
+const searchInput = document.getElementById("search-input");
 
-let id = JSON.parse(localStorage.getItem("id"))
-  ? JSON.parse(localStorage.getItem("id"))
-  : 0;
-
+const userLogins = JSON.parse(localStorage.getItem("userLogins"));
 const getInfo = () => {
-  const userLogins = JSON.parse(localStorage.getItem("userLogins"));
   usernameDiv.textContent = userLogins.username;
 };
+
+if (userLogins === null) {
+  window.location.href = "./index.html";
+}
 
 getInfo();
 
@@ -34,14 +35,21 @@ let records = JSON.parse(localStorage.getItem("records"))
   ? JSON.parse(localStorage.getItem("records"))
   : [];
 
+let id = JSON.parse(localStorage.getItem("id"))
+  ? JSON.parse(localStorage.getItem("id"))
+  : 0;
+let index = records.findIndex((record) => record.id);
+
 const getList = () => {
   localStorage.setItem("records", JSON.stringify(records));
 
   let rows = "";
 
   records.map((record) => {
+    index++;
+
     rows += `<tr>
-    <td>${record.id}</td>
+    <td>${index}</td>
     <td>${record.title}</td>
     <td>${record.description}</td>
     <td>${record.dueDate}</td>
@@ -59,16 +67,9 @@ const getList = () => {
 window.addEventListener("DOMContentLoaded", getList);
 
 const deleteItem = (id) => {
-  // records = records.filter((record) => record.id !== id);
+  const index = records.findIndex((record) => record.id == id);
 
-//  records = records.splice(id,1)
-
-const index = records.findIndex(
-  (record) => record.id == id)
-
- records.splice(index,1)
-
-  localStorage.setItem("records", JSON.stringify(records));
+  records.splice(index, 1);
 
   getList();
 };
@@ -90,7 +91,7 @@ const addItem = () => {
     dueDate: dueDate.value,
   };
 
-  records.push(record);
+  records.unshift(record);
 
   addNewItemForm.style.display = "none";
   tableData.style.display = "block";
@@ -120,6 +121,7 @@ const updateItem = () => {
   const index = records.findIndex(
     (record) => record.id === Number(idInputValue)
   );
+
   records[index] = {
     id: idInputValue,
     title: updateTitleValue,
@@ -135,8 +137,50 @@ const updateItem = () => {
   getList();
 };
 
+const filter = () => {
+  const inputValue = searchInput.value.toLowerCase();
 
+  const filtered = records.filter((record) => {
+    record = record.title.toLowerCase();
 
+    return record.indexOf(inputValue) > -1;
+  });
+
+  return filtered;
+};
+
+const search = () => {
+  const inputValue = searchInput.value.toLowerCase();
+
+  const filtered = records.filter((record) => {
+    record = record.title.toLowerCase();
+
+    return record.indexOf(inputValue) > -1;
+  });
+
+  let row = "";
+
+  filtered.map((filter) => {
+    row += `<tr><td>${index}</td>
+    <td>${filter.title}</td>
+    <td>${filter.description}</td>
+    <td>${filter.dueDate}</td>
+    <td class="d-flex justify-content-between">
+    <i class="bi bi-eye"></i>
+    <i class="bi bi-pencil" id="edit" onClick = editItem(${filter.id})></i>
+    <i class="bi bi-trash" id="delete" onClick = deleteItem(${filter.id})></i>
+    </td>
+    </tr>`;
+  });
+
+  tableRows.innerHTML = row;
+
+  if (inputValue === "") {
+    window.location.reload();
+  }
+};
+
+searchInput.addEventListener("keyup", search);
 updateItemButton.addEventListener("click", updateItem);
 addItemButton.addEventListener("click", addItem);
 newItemButton.addEventListener("click", showAddItemForm);
