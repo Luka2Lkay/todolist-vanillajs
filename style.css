@@ -32,7 +32,7 @@
     cursor: pointer;
 }
 
-#add-new-item-form, #update-item-form {
+#add-new-item-form, #update-item-form, #view-item-form {
     display: none;
 }
 

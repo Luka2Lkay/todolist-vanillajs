@@ -4,6 +4,7 @@ let tableRows = document.getElementById("table-rows");
 const newItemButton = document.getElementById("new-item-button");
 const addNewItemForm = document.getElementById("add-new-item-form");
 const updateItemForm = document.getElementById("update-item-form");
+const viewItemForm = document.getElementById("view-item-form");
 const tableData = document.getElementById("table-data");
 const addItemButton = document.getElementById("add-item-button");
 const updateItemButton = document.getElementById("update-item-button");
@@ -14,6 +15,9 @@ const updateDescription = document.getElementById("update-description");
 const dueDate = document.getElementById("due-date");
 const updateDueDate = document.getElementById("update-due-date");
 const searchInput = document.getElementById("search-input");
+const viewTitle = document.getElementById("view-title");
+const viewDescription = document.getElementById("view-description");
+const viewDueDate = document.getElementById("view-due-date");
 
 const userLogins = JSON.parse(localStorage.getItem("userLogins"));
 const getInfo = () => {
@@ -39,7 +43,6 @@ let id = JSON.parse(localStorage.getItem("id"))
   ? JSON.parse(localStorage.getItem("id"))
   : 0;
 
-
 const getList = () => {
   localStorage.setItem("records", JSON.stringify(records));
   let index = records.findIndex((record) => record.id);
@@ -54,7 +57,7 @@ const getList = () => {
     <td>${record.description}</td>
     <td>${record.dueDate}</td>
     <td class="d-flex justify-content-between">
-    <i class="bi bi-eye"></i>
+    <i class="bi bi-eye" onClick = viewItem(${record.id})></i>
     <i class="bi bi-pencil" id="edit" onClick = editItem(${record.id})></i>
     <i class="bi bi-trash" id="delete" onClick = deleteItem(${record.id})></i>
     </td>
@@ -72,6 +75,18 @@ const deleteItem = (id) => {
   records.splice(index, 1);
 
   getList();
+};
+
+const viewItem = (id) => {
+  viewItemForm.style.display = "block";
+  tableData.style.display = "none";
+
+  const idInput = document.getElementById("view-id");
+  const object = records.find((record) => record.id === id);
+
+  viewTitle.value = object.title;
+  viewDescription.value = object.description;
+  viewDueDate.value = object.dueDate;
 };
 
 const showAddItemForm = () => {
@@ -151,7 +166,7 @@ const filter = () => {
 
 const search = () => {
   const inputValue = searchInput.value.toLowerCase();
-let index = 0
+  let index = 0;
   const filtered = records.filter((record) => {
     record = record.title.toLowerCase();
 
@@ -161,7 +176,7 @@ let index = 0
   let row = "";
 
   filtered.map((filter) => {
-    index++
+    index++;
     row += `<tr><td>${index}</td>
     <td>${filter.title}</td>
     <td>${filter.description}</td>
@@ -180,8 +195,6 @@ let index = 0
     window.location.reload();
   }
 };
-
-
 
 searchInput.addEventListener("keyup", search);
 updateItemButton.addEventListener("click", updateItem);
